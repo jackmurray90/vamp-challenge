@@ -19,6 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start-api": "FLASK_APP=app FLASK_ENV=development env/bin/flask run --no-debugger",
+    "setup": "env/bin/python setup.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
