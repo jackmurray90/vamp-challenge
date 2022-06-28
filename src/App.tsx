@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <h1>List of campaigns</h1>
-      {error && "There was an error loading the campaigns"}
+      {error && "There was an error loading the campaigns."}
       {campaigns.length === 0 && !error && "Loading..."}
       {campaigns.length > 0 &&
         <table>
@@ -47,7 +47,7 @@ function App() {
               <td>{campaign.name}</td>
               <td>{campaign.startDate}</td>
               <td>{campaign.endDate}</td>
-              <td>{campaign.budget}</td>
+              <td>${campaign.budget}</td>
               <td>{campaign.hashtags}</td>
               <td>{campaign.teamName}</td>
               <td>{campaign.description}</td>
