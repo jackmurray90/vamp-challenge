@@ -14,17 +14,23 @@ interface Campaign {
 
 function App() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(config.API_HOST + "/list_campaigns")
-      .then(response => response.json())
-      .then(response => setCampaigns(response));
+      .then(response => {
+        if (!response.ok) return Promise.reject();
+        return response.json();
+      })
+      .then(response => setCampaigns(response))
+      .catch(() => setError(true));
   }, []);
 
   return (
     <div className="App">
       <h1>List of campaigns</h1>
-      {campaigns.length === 0 && "Loading..."}
+      {error && "There was an error loading the campaigns"}
+      {campaigns.length === 0 && !error && "Loading..."}
       {campaigns.length > 0 &&
         <table>
           <tr>
